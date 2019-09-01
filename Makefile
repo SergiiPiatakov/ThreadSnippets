@@ -1,7 +1,7 @@
 CXX		= g++
 
 .PHONY all: 001 002 003 004 \
-			005 006 007
+			005 006 007 008
 
 001:
 	$(CXX) -Wall -Wextra -std=c++11 001_main.cpp -lpthread -o 001_main
@@ -24,6 +24,9 @@ CXX		= g++
 007:
 	$(CXX) -Wall -Wextra -std=c++11 007_main.cpp -lpthread -o 007_main
 
+008:
+	$(CXX) -Wall -Wextra -std=c++11 008_main.cpp -lpthread -o 008_main
+
 .PHONY clean:
 	$(RM) 001_main
 	$(RM) 002_main
@@ -32,3 +35,4 @@ CXX		= g++
 	$(RM) 005_main
 	$(RM) 006_main
 	$(RM) 007_main
+	$(RM) 008_main
