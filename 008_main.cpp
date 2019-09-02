@@ -29,7 +29,6 @@ void Produce (const WorkDescriptor & descriptor)
     for (size_t i = 0; i < descriptor.task; ++i) {
         std::unique_lock <std::mutex> lock (* descriptor.mutex);
         std::cout << " > ";
-        std::this_thread::sleep_for (std::chrono::seconds (1) );
         std::cout << i;
         descriptor.queue->push (i);
         if (i == descriptor.task - 1) {
@@ -70,8 +69,8 @@ int main (int, char **)
       , std::make_shared <bool> (false)
     };
 
-    std::thread producer (Produce, descriptor);
     std::thread consumer (Consume, descriptor);
+    std::thread producer (Produce, descriptor);
 
     producer.join ();
     consumer.join ();
